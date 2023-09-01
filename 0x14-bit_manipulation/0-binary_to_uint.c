@@ -1,33 +1,24 @@
 #include <stdio.h>
 #include "main.h"
 
-/**
- * clear_bit - sets the value of a given bit to 0
- * @n: pointer to the number to change
- * @index: index of the bit to clear
+/*
+ * binary_to_uint - converts a binary number to unsigned int
+ * @b: string containing the binary number
  *
- * Return: 1 for success, -1 for failure
+ * Return: the converted number
  */
-
-int clear_bit(unsigned long int *n, unsigned int index)
+unsigned int binary_to_uint(const char *b) 
 {
-    if (index > sizeof(unsigned long int) * 8)
-       return(-1);
-     *n &= ~(1<< index);
-     return (1);    
+unsigned int total = 0,i = 0;
+	if (b == NULL)
+  return (0);
+  for (i;b[i]; ) 
+{
+  if (b[i] != '0' && b[i] != '1')
+  return (0);
+  total <<= 1;
+  total += b[i]-'0';
+  i++;
 }
-int main(void)
-{
-    unsigned long int n;
-
-    n = 1024;
-    clear_bit(&n, 10);
-    printf("%lu\n", n);
-    n = 0;
-    clear_bit(&n, 10);
-    printf("%lu\n", n);
-    n = 98;
-    clear_bit(&n, 1);
-    printf("%lu\n", n);
-    return (0);
+return total;
 }
